@@ -16,7 +16,6 @@ class MICN(nn.Module):
         self.seq_len = seq_len
         self.c_out = c_out
         self.decomp_kernel = decomp_kernel
-        self.output_attention = output_attention
         self.mode = mode
 
         self.decomp_multi = series_decomp_multi(decomp_kernel)
