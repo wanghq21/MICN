@@ -38,6 +38,7 @@ bash ./scipts/ECL.sh
 bash ./scipts/Exchange.sh
 bash ./scipts/Traffic.sh
 bash ./scipts/WTH.sh
+bash ./scipts/ILI.sh
 ```
 
 ## Experiments
@@ -50,7 +51,8 @@ bash ./scipts/WTH.sh
 
 ### Model Analysis
 #### Local-global vs. self-attetion, Auto-correlation
-
+![arch](./img/local-global-analysis1.png)
+![arch](./img/local-global-analysis2.png)
 
 ## Contact
 If you have any questions, please contact wanghuiqiang@stu.scu.edu.cn.
@@ -61,7 +63,7 @@ If you find this repo useful, please cite our paper
 @article{micn,
   title={MICN: Multi-scale Local and Global Context Modeling for Long-term Series Forecasting},
   author={Huiqiang Wang and Jian Peng and Feihu Huang and Jince Wang and Junhui Chen and Yifei Xiao},
-  booktitle={ICLR},
+  booktitle={International Conference on Learning Representations},
   year={2023}
 }
 ```
