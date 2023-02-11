@@ -4,10 +4,24 @@ Code release of paper ["MICN: Multi-scale Local and Global Context Modeling for 
 MICN achieve SOTA on six benchmarks.
 
 ##  Overall Architecture
+<p align="center">
+<img src=".\img\overall.png" height = "202" alt="" align=center />
+<br><br>
+</p>
+
 
 ### Seasonal Prediction block
+<p align="center">
+<img src=".\img\seasonal.png" height = "250" alt="" align=center />
+<br><br>
+</p>
+
 
 #### Local-Global module
+<p align="center">
+<img src=".\img\local-global.png" height = "150" alt="" align=center />
+<br><br>
+</p>
 
 ## Get Started
 
@@ -28,8 +42,14 @@ bash ./scipts/WTH.sh
 
 ## Experiments
 ### Main Results
+#### Multivariate results
+![arch](./img/multi_results.png)
+
+#### Univariate results
+![arch](./img/uni_results.png)
 
 ### Model Analysis
+#### Local-global vs. self-attetion, Auto-correlation
 
 
 ## Contact
