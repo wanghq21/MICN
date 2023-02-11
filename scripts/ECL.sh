@@ -8,7 +8,7 @@ do
         --data ECL \
         --features M \
         --freq h \
-        --conv_kernel 13 25 \
+        --conv_kernel 12 16 \
         --d_layers 1 \
         --d_model 512 \
         --seq_len 96 \
