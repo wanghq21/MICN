@@ -4,6 +4,7 @@ Code release of paper ["MICN: Multi-scale Local and Global Context Modeling for 
 MICN achieve SOTA on six benchmarks.
 
 ##  Overall Architecture
+As shown in Figure 1, we decompose the time series into seasonal part and trend part by Multi-scale Hybrid Decomposition. For seasonal part, we use Seasonal Prediction block to predict. For trend part, we use simple regression to predict. 
 <p align="center">
 <img src=".\img\overall.png" height = "202" alt="" align=center />
 <br><br>
@@ -11,6 +12,7 @@ MICN achieve SOTA on six benchmarks.
 
 
 ### Seasonal Prediction block
+The seasonal part contains several different patterns after Multi-scale Hybrid Decomposition. For each pattern, we use local-global module to extract local information and global correlations. 
 <p align="center">
 <img src=".\img\seasonal.png" height = "250" alt="" align=center />
 <br><br>
@@ -18,6 +20,7 @@ MICN achieve SOTA on six benchmarks.
 
 
 #### Local-Global module
+We use downsampling convolution to extract local features and isometric convolution to capture global correlations. 
 <p align="center">
 <img src=".\img\local-global.png" height = "150" alt="" align=center />
 <br><br>
