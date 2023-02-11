@@ -33,7 +33,7 @@ class MICN(nn.Module):
     def forward(self, x_enc, x_mark_enc, x_dec, x_mark_dec,
                 enc_self_mask=None, dec_self_mask=None, dec_enc_mask=None):
 
-        # trend模块: regre or mean
+        # trend-cyclical prediction block: regre or mean
         if self.mode == 'regre':
             seasonal_init_enc, trend = self.decomp_multi(x_enc)
             trend = self.regression(trend.permute(0,2,1)).permute(0, 2, 1)
