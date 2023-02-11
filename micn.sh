@@ -8,7 +8,7 @@ do
         --data ETTm2 \
         --features M \
         --freq t \
-        --conv_kernel 13 25 \
+        --conv_kernel 12 16 \
         --d_layers 1 \
         --d_model 512 \
         --seq_len 96 \
@@ -24,7 +24,7 @@ do
         --data ECL \
         --features M \
         --freq h \
-        --conv_kernel 13 25 \
+        --conv_kernel 12 16 \
         --d_layers 1 \
         --d_model 512 \
         --seq_len 96 \
@@ -40,7 +40,7 @@ do
         --data Exchange \
         --features M \
         --freq d \
-        --conv_kernel 13 25 \
+        --conv_kernel 12 16 \
         --d_layers 1 \
         --d_model 512 \
         --seq_len 96 \
@@ -56,7 +56,7 @@ do
         --data Traffic \
         --features M \
         --freq h \
-        --conv_kernel 13 25 \
+        --conv_kernel 12 16 \
         --d_layers 1 \
         --d_model 512 \
         --seq_len 96 \
@@ -72,7 +72,7 @@ do
         --data WTH \
         --features M \
         --freq t \
-        --conv_kernel 13 25 \
+        --conv_kernel 12 16 \
         --d_layers 1 \
         --d_model 512 \
         --seq_len 96 \
