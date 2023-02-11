@@ -65,7 +65,7 @@ Visualization of learned trend-cyclical part prediction and seasonal part predic
 
 
 ## Contact
-If you have any questions, please contact wanghuiqiang@stu.scu.edu.cn.
+If you have any questions, please contact wanghuiqiang@stu.scu.edu.cn. Welcome to discuss together.
 
 ## Citation
 If you find this repo useful, please cite our paper
