@@ -4,11 +4,20 @@ import numpy as np
 import random
 from exp.exp_informer import Exp_Informer
 
+def setup_seed(seed):
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.cuda.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True
+setup_seed(2021)
 
 
 parser = argparse.ArgumentParser(description='[MICN] Long Sequences Forecasting')
 
 parser.add_argument('--model', type=str, required=True, default='micn',help='model of experiment: MICN')
+parser.add_argument('--mode', type=str, default='regre', help='different mode of trend prediction block: [regre or mean]')
 
 parser.add_argument('--data', type=str, required=True, default='ETTh1', help='data')
 parser.add_argument('--root_path', type=str, default='./data/ETT/', help='root path of the data file')
@@ -25,7 +34,6 @@ parser.add_argument('--seq_len', type=int, default=96, help='input sequence leng
 parser.add_argument('--label_len', type=int, default=48, help='start token length of Informer decoder')
 parser.add_argument('--pred_len', type=int, default=24, help='prediction sequence length')
 
-parser.add_argument('--mode', type=str, default='regre', help='different mode of trend prediction block: [regre or mean]')
 parser.add_argument('--enc_in', type=int, default=7, help='encoder input size')
 parser.add_argument('--dec_in', type=int, default=7, help='decoder input size')
 parser.add_argument('--c_out', type=int, default=7, help='output size')
@@ -44,7 +52,7 @@ parser.add_argument('--cols', type=str, nargs='+', help='certain cols from the d
 parser.add_argument('--num_workers', type=int, default=0, help='data loader num workers')
 parser.add_argument('--itr', type=int, default=1, help='experiments times')
 
-parser.add_argument('--train_epochs', type=int, default=10, help='train epochs')
+parser.add_argument('--train_epochs', type=int, default=15, help='train epochs')
 parser.add_argument('--batch_size', type=int, default=32, help='batch size of train input data')
 parser.add_argument('--patience', type=int, default=3, help='early stopping patience')
 parser.add_argument('--learning_rate', type=float, default=0.001, help='optimizer learning rate')
@@ -58,7 +66,6 @@ parser.add_argument('--use_gpu', type=bool, default=True, help='use gpu')
 parser.add_argument('--gpu', type=int, default=0, help='gpu')
 parser.add_argument('--use_multi_gpu', action='store_true', help='use multiple gpus', default=False)
 parser.add_argument('--devices', type=str, default='0,1,2,3',help='device ids of multile gpus')
-
 args = parser.parse_args()
 
 args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False
@@ -86,16 +93,6 @@ if args.data in data_parser.keys():
     args.enc_in, args.dec_in, args.c_out = data_info[args.features]
 args.detail_freq = args.freq
 args.freq = args.freq[-1:]
-
-
-def setup_seed(seed):
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    torch.cuda.manual_seed(seed)
-    np.random.seed(seed)
-    random.seed(seed)
-    torch.backends.cudnn.deterministic = True
-setup_seed(2021)
 
 decomp_kernel = []  # kernel of decomposition operation 
 isometric_kernel = []  # kernel of isometric convolution

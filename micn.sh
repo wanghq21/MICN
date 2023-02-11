@@ -1,3 +1,11 @@
+
+# --features M  : multivariate
+# --features S  : univariate
+
+# --mode regre  : MICN-regre
+# --mode mean  : MICN-mean
+
+
 pred_l=(96 192 336 720)
 
 for i in ${pred_l[@]}
@@ -81,16 +89,15 @@ do
 done
 
 
-
 pred_l=(24 36 48 60)
 
 for i in ${pred_l[@]}
 do
     python -u run.py \
         --model micn \
-        --mode regre \
+        --mode mean \
         --data ILI \
-        --features S \
+        --features M \
         --freq d \
         --conv_kernel 18 12 \
         --d_layers 1 \
