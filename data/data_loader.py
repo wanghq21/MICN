@@ -51,14 +51,6 @@ class Dataset_ETT_hour(Dataset):
         border2s = [12*30*24, 12*30*24+4*30*24, 12*30*24+8*30*24]
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
-
-        # num_train = int(len(df_raw) * 0.6)
-        # num_test = int(len(df_raw) * 0.2)
-        # num_vali = len(df_raw) - num_train - num_test
-        # border1s = [0, num_train - self.seq_len, len(df_raw) - num_test - self.seq_len]
-        # border2s = [num_train, num_train + num_vali, len(df_raw)]
-        # border1 = border1s[self.set_type]
-        # border2 = border2s[self.set_type]
         
         if self.features=='M' or self.features=='MS':
             cols_data = df_raw.columns[1:]
@@ -83,20 +75,6 @@ class Dataset_ETT_hour(Dataset):
             self.data_y = df_data.values[border1:border2]
         else:
             self.data_y = data[border1:border2]
-
-        # ratio = 0.01
-        # degree = 2
-        # if self.set_type == 0:   # 只对训练集进行扰动，扰动比例为1%，扰动程度为[-2,2]倍随机
-        #     len1 = len(self.data_x)
-        #     disturb = int(len1*ratio)
-        #     print("disturb", disturb)
-        #     dis_list = np.random.randint(0, len1-1, disturb)
-        #     # print(dis_list)
-        #     degree = np.random.uniform(-1*degree,degree,disturb).reshape(-1,1)
-        #     # print(degree)
-        #     # print(self.data_x[0])
-        #     self.data_x[dis_list] = self.data_x[dis_list] * degree
-        #     # print(self.data_x[0])
 
         self.data_stamp = data_stamp
     
@@ -161,14 +139,6 @@ class Dataset_ETT_minute(Dataset):
         border2s = [12 * 30 * 24 * 4, 12 * 30 * 24 * 4 + 4 * 30 * 24 * 4, 12 * 30 * 24 * 4 + 8 * 30 * 24 * 4]
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
-
-        # num_train = int(len(df_raw) * 0.6)
-        # num_test = int(len(df_raw) * 0.2)
-        # num_vali = len(df_raw) - num_train - num_test
-        # border1s = [0, num_train - self.seq_len, len(df_raw) - num_test - self.seq_len]
-        # border2s = [num_train, num_train + num_vali, len(df_raw)]
-        # border1 = border1s[self.set_type]
-        # border2 = border2s[self.set_type]
         
         if self.features=='M' or self.features=='MS':
             cols_data = df_raw.columns[1:]
@@ -192,20 +162,6 @@ class Dataset_ETT_minute(Dataset):
             self.data_y = df_data.values[border1:border2]
         else:
             self.data_y = data[border1:border2]
-
-        # ratio = 0.01
-        # degree = 2
-        # if self.set_type == 0:   # 只对训练集进行扰动，扰动比例为1%，扰动程度为[-2,2]倍随机
-        #     len1 = len(self.data_x)
-        #     disturb = int(len1*ratio)
-        #     print("disturb", disturb)
-        #     dis_list = np.random.randint(0, len1-1, disturb)
-        #     # print(dis_list)
-        #     degree = np.random.uniform(-1*degree,degree,disturb).reshape(-1,1)
-        #     # print(degree)
-        #     # print(self.data_x[0])
-        #     self.data_x[dis_list] = self.data_x[dis_list] * degree
-        #     # print(self.data_x[0])
 
         self.data_stamp = data_stamp
     
@@ -300,24 +256,9 @@ class Dataset_Custom(Dataset):
             
         df_stamp = df_raw[['date']][border1:border2]
         df_stamp['date'] = pd.to_datetime(df_stamp.date)
-        # print("df_stamp", df_stamp)
         data_stamp = time_features(df_stamp, timeenc=self.timeenc, freq=self.freq)
-        # print("data_stamp shape", data_stamp[10])
-        self.data_x = data[border1:border2]
 
-        # ratio = 0.10
-        # degree = 2
-        # if self.set_type == 0:   # 只对训练集进行扰动，扰动比例为1%，扰动程度为[-2,2]倍随机
-        #     len1 = len(self.data_x)
-        #     disturb = int(len1*ratio)
-        #     print("disturb", disturb)
-        #     dis_list = np.random.randint(0, len1-1, disturb)
-        #     # print(dis_list)
-        #     degree = np.random.uniform(-1*degree,degree,disturb).reshape(-1,1)
-        #     # print(degree)
-        #     # print(self.data_x[0])
-        #     self.data_x[dis_list] = self.data_x[dis_list] * degree
-        #     # print(self.data_x[0])
+        self.data_x = data[border1:border2]
 
         if self.inverse:
             self.data_y = df_data.values[border1:border2]
