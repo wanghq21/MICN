@@ -1,5 +1,5 @@
 # MICN
-Code release of paper ["MICN: Multi-scale Local and Global Context Modeling for Long-term Series Forecasting"](https://openreview.net/pdf?id=zt53IDUR1U) (ICLR 2023)
+Code release of paper ["MICN: Multi-scale Local and Global Context Modeling for Long-term Series Forecasting"](https://openreview.net/pdf?id=zt53IDUR1U) (ICLR 2023 oral)
 
 MICN achieve SOTA on six benchmarks.
 
