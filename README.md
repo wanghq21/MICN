@@ -54,8 +54,15 @@ bash ./scipts/ILI.sh
 
 ### Model Analysis
 #### Local-global vs. self-attetion, Auto-correlation
+
 ![arch](./img/local-global-analysis1.png)
 ![arch](./img/local-global-analysis2.png)
+
+### Visualization
+Visualization of learned trend-cyclical part prediction and seasonal part prediction.
+
+![arch](./img/visualization.png)
+
 
 ## Contact
 If you have any questions, please contact wanghuiqiang@stu.scu.edu.cn.
